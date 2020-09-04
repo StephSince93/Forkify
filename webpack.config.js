@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 //console.log(path.resolve(__dirname, 'dist/js'))
 module.exports = {
-    entry: './src/js/index.js', // First proerty Webpack looks at
+    entry: ['./src/js/index.js'], // First proerty Webpack looks at
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/bundle.js'
@@ -15,6 +15,17 @@ module.exports = {
             filename: 'index.html',
             template: './src/index.html'
         })
-    ]
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            }
+        ]
+    }
     // mode: 'development' // Compiles for developement, quick and easy, Will be moved to npm scripts
 }
