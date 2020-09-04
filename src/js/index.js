@@ -3,16 +3,10 @@
 // import * as searchView from './views/searchView' 
 
 // console.log(`Using imported function ${searchView.add(searchView.ID, 2)} and ${searchView.multiply(searchView.ID, 4)}. ${string}`)
-import axios from 'axios'
+import Search from './models/Search'
 
-async function getResults(query) {
-    try {
-        const {data} = await axios.get(`https://forkify-api.herokuapp.com/api/search?q=${query}`)
-        console.log(data.recipes)
-    }catch(e) {
-        alert(e)
-    }
+const search = new Search('pizza')
 
-}
+search.getResults()
 
-getResults('tomato')
+console.log(search)
