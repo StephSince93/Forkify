@@ -5,6 +5,7 @@
 // console.log(`Using imported function ${searchView.add(searchView.ID, 2)} and ${searchView.multiply(searchView.ID, 4)}. ${string}`)
 import Search from './models/Search'
 import Recipe from './models/Recipe'
+import List from './models/List'
 
 import * as searchView from './views/searchView'
 import * as recipeView from './views/recipeView'
@@ -74,7 +75,6 @@ elements.searchRes.addEventListener('click', e => {
 const controlRecipe = async () => {
     // Get ID from url
     const id = window.location.hash.replace('#', '')
-    console.log(id)
 
     if (id) {
         // Prepare UI for changes
@@ -91,7 +91,7 @@ const controlRecipe = async () => {
         try {
             // Get recipe data and parse ingredients
             await state.recipe.getRecipe()
-            console.log(state.recipe.ingredients)
+            
             state.recipe.parseIngredients()
             // Calculate servings and time
             state.recipe.calcTime()
@@ -127,6 +127,7 @@ elements.recipe.addEventListener('click', e => {
         state.recipe.updateServings('inc')
         recipeView.updateServingsIngredients(state.recipe)
     }
-
-    console.log(state.recipe)
 })
+
+const l = new List()
+window.l = l
