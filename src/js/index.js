@@ -22,7 +22,6 @@ import { elements, renderLoader, clearLoader } from './views/base'
  *  - Liked recipes
 */
 const state = {}
-window.state = state
 
 /** 
  * SEARCH CONTROLLER 
@@ -30,7 +29,6 @@ window.state = state
 const controlSearch = async () => {
     // 1) get query from view
     const query = searchView.getInput() //TODO
-    console.log(query)
 
     if (query) {
         // 2) New search object and add it to state
@@ -128,7 +126,7 @@ const controlList = () => {
     // Add each ingredient to the list and UI
     state.recipe.ingredients.forEach(el => {
         const item = state.list.addItem(el.count, el.unit, el.ingredient)
-        console.log(item)
+
         listView.renderItem(item)
     })
 
@@ -228,6 +226,3 @@ elements.recipe.addEventListener('click', e => {
         controlLike()
     }
 })
-
-const l = new List()
-window.l = l
